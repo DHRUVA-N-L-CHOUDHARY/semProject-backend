@@ -20,7 +20,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/bus', busRoutes);
 app.use('/api/cities', cityRoutes);
 app.use('/api/assistanceRequest', assistanceRequest);
-app.use("/api/v1/location", locationRecognitionRoutes);
+app.use("/api/location", locationRecognitionRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
