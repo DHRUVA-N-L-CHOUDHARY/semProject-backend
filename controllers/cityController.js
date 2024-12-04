@@ -81,15 +81,17 @@ exports.searchCities = async (req, res) => {
   try {
     const { query } = req.query;
 
-    const cities = await City.find({
-      cityName: { $regex: query, $options: "i" },
-    });
+    const filter = query
+      ? { cityName: { $regex: query, $options: "i" } }
+      : {}; // Fetch all cities if no query
 
+    const cities = await City.find(filter);
     res.status(200).json(cities);
   } catch (error) {
     res.status(500).json({ message: "Error searching cities", error });
   }
 };
+
 
 // 5. Admin/Owner - Add/Update Stops to a City
 exports.addStops = async (req, res) => {
