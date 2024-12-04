@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const busSchema = new mongoose.Schema(
   {
@@ -9,13 +9,13 @@ const busSchema = new mongoose.Schema(
     },
     ownerId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', // Refers to the Owner model
+      ref: "User", // Refers to the Owner model
       required: true,
     },
     staff: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', // Refers to the Staff model
+        ref: "User", // Refers to the Staff model
       },
     ],
     busCapacity: {
@@ -25,17 +25,23 @@ const busSchema = new mongoose.Schema(
     seats: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Seat', // Refers to the Seat model
+        ref: "Seat", // Refers to the Seat model
+      },
+    ],
+    schedule: [
+      {
+        date: { type: Date, required: true },
+        availableSeats: { type: Number, required: true },
       },
     ],
     source: {
-        type: String,
-        // Refers to the Stops model
+      type: String,
+      // Refers to the Stops model
       required: true,
     },
     destination: {
-        type: String,
-        // Refers to the Stops model
+      type: String,
+      // Refers to the Stops model
       required: true,
     },
     busPhotos: {
@@ -53,9 +59,9 @@ const busSchema = new mongoose.Schema(
     restStops: [
       [
         {
-            type: String,
-        }
-      ]
+          type: String,
+        },
+      ],
     ],
     busNumber: {
       type: String,
@@ -66,4 +72,4 @@ const busSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Bus', busSchema);
+module.exports = mongoose.model("Bus", busSchema);

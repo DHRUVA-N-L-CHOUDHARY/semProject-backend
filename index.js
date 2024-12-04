@@ -7,6 +7,8 @@ const cityRoutes = require('./routes/cityRoutes');
 const busRoutes = require('./routes/busRoutes');
 const assistanceRequest = require('./routes/assistanceRequest');
 const locationRecognitionRoutes = require('./routes/locationRecognition');
+const searchRoutes = require("./routes/searchRoutes");
+// const orderRoutes = require("./routes/orderRoutes");
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.use('/api/bus', busRoutes);
 app.use('/api/cities', cityRoutes);
 app.use('/api/assistanceRequest', assistanceRequest);
 app.use("/api/location", locationRecognitionRoutes);
+app.use("/api/search", searchRoutes);
+// app.use("/api/order", orderRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
